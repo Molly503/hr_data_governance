@@ -1,0 +1,8 @@
+data_source,field_name,completion_rate
+learning,learning_员工ID,100
+learning,learning_姓名,100
+learning,learning_部门,100
+learning,learning_课程名称,100
+learning,learning_开始日期,100
+learning,learning_完成状态,100
+learning,learning_得分,78

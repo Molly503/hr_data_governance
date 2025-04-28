@@ -1,0 +1,8 @@
+data_source,field_name,completion_rate
+hris,hris_员工ID,100
+hris,hris_姓名,100
+hris,hris_性别,100
+hris,hris_部门,100
+hris,hris_职位,100
+hris,hris_员工类型,100
+hris,hris_入职日期,100
