@@ -28,16 +28,29 @@ CREATE TABLE hris_data (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 删除表（如果存在）然后重新创建performance_data表
-DROP TABLE IF EXISTS performance_data;
+DROP TABLE performance_data;
+
 CREATE TABLE performance_data (
   `员工ID` VARCHAR(255),
   `姓名` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `部门` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `职位` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `评估周期` VARCHAR(50),
+  `评估开始日期` DATE,
+  `评估完成日期` DATE,
   `绩效评分` VARCHAR(255),
-  `评语` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+  `评语` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `评估者ID` VARCHAR(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE performance_data
+ADD COLUMN `评估开始日期` DATE AFTER `职位`,
+ADD COLUMN `评估完成日期` DATE AFTER `评估开始日期`,
+ADD COLUMN `评估者ID` VARCHAR(50) AFTER `评语`;
+
+ALTER TABLE performance_data
+DROP COLUMN `评估周期`;
+
+DESCRIBE performance_data;
 
 -- 删除表（如果存在）然后重新创建learning_data表
 DROP TABLE IF EXISTS learning_data;
@@ -50,3 +63,5 @@ CREATE TABLE learning_data (
   `完成状态` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `得分` VARCHAR(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
